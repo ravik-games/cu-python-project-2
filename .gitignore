@@ -1,2 +1,4 @@
 /.venv/
 /.idea/
+/credentials.py
+/temp/
