@@ -10,142 +10,208 @@
             background-color: #f0f8ff;
             color: #333;
         }
+
         .container {
             background: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .nav-tabs .nav-link {
             color: #007bff;
         }
+
         .nav-tabs .nav-link.active {
             background-color: #007bff;
             color: white;
         }
+
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
         }
+
         .btn-primary:hover {
             background-color: #0056b3;
             border-color: #004080;
         }
+
         .form-label {
             font-weight: bold;
         }
+
         .alert {
             margin-top: 20px;
             padding: 15px;
             border-radius: 8px;
             font-weight: bold;
         }
+
         .alert-good {
             background-color: #d4edda;
             color: #155724;
         }
+
         .alert-normal {
             background-color: #fff3cd;
             color: #856404;
         }
+
         .alert-bad {
             background-color: #f8d7da;
             color: #721c24;
         }
+
         h3 {
             margin-bottom: 20px;
+            margin-top: 20px;
         }
+
         .mb-3 {
             margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center text-primary">Прогноз погоды</h1>
-        <ul class="nav nav-tabs" id="weather-tabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab">
-                    Погода по координатам
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab">
-                    Оценка погоды
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab">
-                    Сравнение точек
-                </button>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <!-- Tab 1 -->
-            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                <h3>Получить данные о погоде</h3>
-                <form id="coordinates-form">
-                    <div class="mb-3">
-                        <label for="latitude" class="form-label">Широта</label>
-                        <input type="text" class="form-control" id="latitude" name="latitude" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="longitude" class="form-label">Долгота</label>
-                        <input type="text" class="form-control" id="longitude" name="longitude" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Получить прогноз</button>
-                </form>
-                <div id="weather-result-tab1" class="mt-3"></div>
-            </div>
+<div class="container mt-5">
+    <h1 class="text-center text-primary">Прогноз погоды</h1>
+    <ul class="nav nav-tabs" id="weather-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
+                    role="tab">
+                Погода по координатам
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab">
+                Оценка погоды
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab">
+                Сравнение точек
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <!-- Tab 1 -->
+        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+            <h3>Получить данные о погоде</h3>
+            <form id="coordinates-form">
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">Широта</label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" required>
+                </div>
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">Долгота</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Получить прогноз</button>
+            </form>
+            <div id="weather-result-tab1" class="mt-3"></div>
+        </div>
 
-            <!-- Tab 2 -->
-            <div class="tab-pane fade" id="tab2" role="tabpanel">
-                <h3>Оценка погоды</h3>
-                <form id="weather-type-form">
-                    <div class="mb-3">
-                        <label for="temperature" class="form-label">Температура (°C)</label>
-                        <input type="text" class="form-control" id="temperature" name="temperature" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="humidity" class="form-label">Влажность (%)</label>
-                        <input type="text" class="form-control" id="humidity" name="humidity" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="windSpeed" class="form-label">Скорость ветра (м/с)</label>
-                        <input type="text" class="form-control" id="windSpeed" name="windSpeed" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="precipitation" class="form-label">Вероятность осадков (%)</label>
-                        <input type="text" class="form-control" id="precipitation" name="precipitation" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Оценить погоду</button>
-                </form>
-                <div id="weather-result-tab2" class="mt-3"></div>
-            </div>
+        <!-- Tab 2 -->
+        <div class="tab-pane fade" id="tab2" role="tabpanel">
+            <h3>Оценка погоды</h3>
+            <form id="weather-type-form">
+                <div class="mb-3">
+                    <label for="temperature" class="form-label">Температура (°C)</label>
+                    <input type="text" class="form-control" id="temperature" name="temperature" required>
+                </div>
+                <div class="mb-3">
+                    <label for="humidity" class="form-label">Влажность (%)</label>
+                    <input type="text" class="form-control" id="humidity" name="humidity" required>
+                </div>
+                <div class="mb-3">
+                    <label for="windSpeed" class="form-label">Скорость ветра (м/с)</label>
+                    <input type="text" class="form-control" id="windSpeed" name="windSpeed" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precipitation" class="form-label">Вероятность осадков (%)</label>
+                    <input type="text" class="form-control" id="precipitation" name="precipitation" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Оценить погоду</button>
+            </form>
+            <div id="weather-result-tab2" class="mt-3"></div>
+        </div>
 
-            <!-- Tab 3: -->
-            <div class="tab-pane fade" id="tab3" role="tabpanel">
-                <h3>Сравнение точек</h3>
-                <p>В разработке.</p>
-            </div>
+        <!-- Tab 3: -->
+        <div class="tab-pane fade" id="tab3" role="tabpanel">
+            <h3>Сравнение двух точек</h3>
+            <form id="points-form">
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="city" id="inputCity" value="true" checked>
+                    <label class="form-check-label" for="inputCity">
+                        Вводить названия городов
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="city" id="inputCoordinates" value="false">
+                    <label class="form-check-label" for="inputCoordinates">
+                        Вводить координаты
+                    </label>
+                </div>
+
+                <div id="city-inputs">
+                    <div class="mb-3">
+                        <label for="city-1" class="form-label">Город 1</label>
+                        <input type="text" class="form-control" id="city-1" name="city-1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city-2" class="form-label">Город 2</label>
+                        <input type="text" class="form-control" id="city-2" name="city-2" required>
+                    </div>
+                </div>
+
+                <div id="coordinates-inputs" style="display: none;">
+                    <div class="mb-3">
+                        <label for="latitude-1" class="form-label">Широта 1</label>
+                        <input type="text" class="form-control" id="latitude-1" name="latitude-1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="longitude-1" class="form-label">Долгота 1</label>
+                        <input type="text" class="form-control" id="longitude-1" name="longitude-1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="latitude-2" class="form-label">Широта 2</label>
+                        <input type="text" class="form-control" id="latitude-2" name="latitude-2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="longitude-2" class="form-label">Долгота 2</label>
+                        <input type="text" class="form-control" id="longitude-2" name="longitude-2">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Сравнить точки</button>
+            </form>
+            <div id="weather-result-tab3" class="mt-3"></div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Функция для получения прогноза по координатам
-        document.getElementById('coordinates-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const latitude = document.getElementById('latitude').value;
-            const longitude = document.getElementById('longitude').value;
-            const formData = new FormData();
-            formData.append('latitude', latitude);
-            formData.append('longitude', longitude);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Функция для получения прогноза по координатам
+    document.getElementById('coordinates-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const latitude = document.getElementById('latitude').value.trim();
+        const longitude = document.getElementById('longitude').value.trim();
 
-            fetch('/get_weather_data', {
-                method: 'POST',
-                body: formData
-            })
+        if (!latitude || !longitude) {
+            document.getElementById('weather-result-tab1').innerHTML = '<p class="text-danger">Пожалуйста, заполните все поля.</p>';
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('latitude', latitude);
+        formData.append('longitude', longitude);
+
+        fetch('/get_weather_data', {
+            method: 'POST',
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 const resultDiv = document.getElementById('weather-result-tab1');
@@ -153,54 +219,126 @@
                 if (data) {
                     const weatherTypeClass = getWeatherClass(data.weather_type);
                     resultDiv.innerHTML = `
-                        <p><strong>Температура:</strong> ${data.temperature}°C</p>
-                        <p><strong>Влажность:</strong> ${data.humidity}%</p>
-                        <p><strong>Скорость ветра:</strong> ${data.windSpeed} м/с</p>
-                        <p><strong>Вероятность осадков:</strong> ${data.precipitationProbability}%</p>
-                        <div class="alert ${weatherTypeClass}"><strong>Тип погоды:</strong> ${data.weather_type}</div>
-                    `;
+                    <p><strong>Температура:</strong> ${data.temperature}°C</p>
+                    <p><strong>Влажность:</strong> ${data.humidity}%</p>
+                    <p><strong>Скорость ветра:</strong> ${data.windSpeed} м/с</p>
+                    <p><strong>Вероятность осадков:</strong> ${data.precipitationProbability}%</p>
+                    <div class="alert ${weatherTypeClass}"><strong>Тип погоды:</strong> ${data.weather_type}</div>
+                `;
+                } else {
+                    resultDiv.innerHTML = '<p class="text-danger">Ошибка при получении данных о погоде.</p>';
                 }
             })
-            .catch(error => console.error('Ошибка:', error));
-        });
+            .catch(error => {
+                console.error('Ошибка:', error);
+                document.getElementById('weather-result-tab1').innerHTML = '<p class="text-danger">Ошибка при отправке запроса.</p>';
+            });
+    });
 
-        // Функция для получения класса для типа погоды
-        function getWeatherClass(weatherType) {
-            if (weatherType === 'Хорошая погода') {
-                return 'alert-good';
-            } else if (weatherType === 'Нормальная погода') {
-                return 'alert-normal';
-            } else {
-                return 'alert-bad';
-            }
+    // Функция для оценки погоды по введенным данным на второй вкладке
+    document.getElementById('weather-type-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const temperature = document.getElementById('temperature').value.trim();
+        const humidity = document.getElementById('humidity').value.trim();
+        const windSpeed = document.getElementById('windSpeed').value.trim();
+        const precipitation = document.getElementById('precipitation').value.trim();
+
+        if (!temperature || !humidity || !windSpeed || !precipitation) {
+            document.getElementById('weather-result-tab2').innerHTML = '<p class="text-danger">Пожалуйста, заполните все поля.</p>';
+            return;
         }
 
-        // Функция для оценки погоды по введенным данным на второй вкладке
-        document.getElementById('weather-type-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch('/check_weather_type', {
-                method: 'POST',
-                body: formData
-            })
+        fetch('/check_weather_type', {
+            method: 'POST',
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 const resultDiv = document.getElementById('weather-result-tab2');
                 resultDiv.innerHTML = '';
                 if (data.weather_type) {
-                    let alertClass = '';
-                    if (data.weather_type === 'Хорошая погода') {
-                        alertClass = 'alert-good';
-                    } else if (data.weather_type === 'Нормальная погода') {
-                        alertClass = 'alert-normal';
-                    } else {
-                        alertClass = 'alert-bad';
-                    }
+                    let alertClass = getWeatherClass(data.weather_type);
                     resultDiv.innerHTML = `<div class="alert ${alertClass}"><strong>Тип погоды:</strong> ${data.weather_type}</div>`;
+                } else {
+                    resultDiv.innerHTML = '<p class="text-danger">Ошибка при обработке данных о погоде.</p>';
                 }
             })
-            .catch(error => console.error('Ошибка:', error));
+            .catch(error => {
+                console.error('Ошибка:', error);
+                document.getElementById('weather-result-tab2').innerHTML = '<p class="text-danger">Ошибка при отправке запроса.</p>';
+            });
+    });
+
+    // Функция для получения класса для типа погоды
+    function getWeatherClass(weatherType) {
+        if (weatherType === 'Хорошая погода') {
+            return 'alert-good';
+        } else if (weatherType === 'Нормальная погода') {
+            return 'alert-normal';
+        } else {
+            return 'alert-bad';
+        }
+    }
+
+    // Переключение между вводом городов и координат
+    document.querySelectorAll('input[name="city"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            const cityInputs = document.getElementById('city-inputs');
+            const coordinatesInputs = document.getElementById('coordinates-inputs');
+            if (this.value === "true") {
+                cityInputs.style.display = "block";
+                coordinatesInputs.style.display = "none";
+            } else {
+                cityInputs.style.display = "none";
+                coordinatesInputs.style.display = "block";
+            }
         });
-    </script>
+    });
+
+    // Обработка формы для 3 вкладки
+    document.getElementById('points-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('/get_weather_in_points', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('weather-result-tab3');
+                resultDiv.innerHTML = '';
+                if (data.length === 2) {
+                    const point1Class = getWeatherClass(data[0].weather_type);
+                    const point2Class = getWeatherClass(data[1].weather_type);
+                    resultDiv.innerHTML = `
+                        <div>
+                            <h4>Точка 1</h4>
+                            <p><strong>Температура:</strong> ${data[0].temperature}°C</p>
+                            <p><strong>Влажность:</strong> ${data[0].humidity}%</p>
+                            <p><strong>Скорость ветра:</strong> ${data[0].windSpeed} м/с</p>
+                            <p><strong>Вероятность осадков:</strong> ${data[0].precipitationProbability}%</p>
+                            <div class="alert ${point1Class}"><strong>Тип погоды:</strong> ${data[0].weather_type}</div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4>Точка 2</h4>
+                            <p><strong>Температура:</strong> ${data[1].temperature}°C</p>
+                            <p><strong>Влажность:</strong> ${data[1].humidity}%</p>
+                            <p><strong>Скорость ветра:</strong> ${data[1].windSpeed} м/с</p>
+                            <p><strong>Вероятность осадков:</strong> ${data[1].precipitationProbability}%</p>
+                            <div class="alert ${point2Class}"><strong>Тип погоды:</strong> ${data[1].weather_type}</div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = '<p class="text-danger">Ошибка при получении данных о погоде.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                document.getElementById('weather-result-tab3').innerHTML = '<p class="text-danger">Ошибка при отправке запроса.</p>';
+            });
+    });
+</script>
 </body>
 </html>
